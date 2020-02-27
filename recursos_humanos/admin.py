@@ -54,7 +54,7 @@ class PersonaAdmin(admin.ModelAdmin):
 	fieldsets = (
         (None, {
 			'classes': ('extrapretty','wide'),
-            'fields': ('status',('imagen'))
+            'fields': ('status',('imagen'),'cod_empresa')
         }), ('Datos Personales', {
 			'classes': ('extrapretty','wide'),
 			'fields': ('cedula',('nombre_1','nombre_2'),('apellido_1','apellido_2'),'fecha_nacimiento',('edad','genero'))
@@ -73,7 +73,7 @@ class PersonaSummaryAdmin(admin.ModelAdmin):
     change_list_template = 'admin/persona_summary_change_list.html'
     actions = False
     date_hierarchy = 'fech_ing'
-    list_filter = ('status',)
+    list_filter = ('status','cod_empresa')
 
     def has_add_permission(self, request, obj=None):
         return False

@@ -25,7 +25,7 @@ SECRET_KEY = '@2tcxm6!e3rnkez)f8hj#*#4$5+&y#=odk3*dtdy2g%n!1k%y-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['185.28.22.239','sistorms.com']
+ALLOWED_HOSTS = ['127.0.0.1','0.0.0.0','185.28.22.239','sistorms.com']
 
 LOGIN_URL = '/login'
 

@@ -4,3 +4,5 @@ recursos_humanos/migrations/*
 db.sqlite3
 sistema/migrations/*
 sistema2/migrations/*
+nomina/__pycache__/.*
+concepto_pago/migrations/.*
