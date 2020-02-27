@@ -285,6 +285,10 @@ class Empleado(models.Model):
     status = models.CharField(choices=STATUSE, max_length=30, default='desempleado', verbose_name='Estado De La Persona')  
     direccion = models.TextField(blank=True, null=True, verbose_name='Direccion')
 
+    def __str__(self):
+        return '  %s' % (self.cod_empleado)
+    
+
     def imagen_tag(self):
         if self.imagen:
             return mark_safe('<img src="%s" style="width: 45px; height:45px; margin-left: 30px" />' % self.imagen.url)

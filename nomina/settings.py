@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'sistema',
     'prenomina',
     'recursos_humanos',
+    'concepto_pago',
     #'tabbed_admin',
 
 ]

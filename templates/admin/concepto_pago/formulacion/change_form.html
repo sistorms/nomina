@@ -1,0 +1,209 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_urls static admin_modify %}
+
+{% block extrahead %}{{ block.super }}
+<script type="text/javascript" src="{% url 'admin:jsi18n' %}"></script>
+{{ media }}
+{% endblock %}
+
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/forms.css" %}">{% endblock %}
+
+{% block coltype %}colM{% endblock %}
+
+{% block bodyclass %}{{ block.super }} app-{{ opts.app_label }} model-{{ opts.model_name }} change-form{% endblock %}
+
+{% if not is_popup %}
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+<a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+&rsaquo; <a href="{% url 'admin:app_list' app_label=opts.app_label %}">{{ opts.app_config.verbose_name }}</a>
+&rsaquo; {% if has_view_permission %}<a href="{% url opts|admin_urlname:'changelist' %}">{{ opts.verbose_name_plural|capfirst }}</a>{% else %}{{ opts.verbose_name_plural|capfirst }}{% endif %}
+&rsaquo; {% if add %}{% blocktrans with name=opts.verbose_name %}Add {{ name }}{% endblocktrans %}{% else %}{{ original|truncatewords:"18" }}{% endif %}
+</div>
+{% endblock %}
+{% endif %}
+
+{% block content %}<div id="content-main">
+{% block object-tools %}
+{% if change %}{% if not is_popup %}
+  <ul class="object-tools">
+    {% block object-tools-items %}
+      {% change_form_object_tools %}
+    {% endblock %}
+  </ul>
+{% endif %}{% endif %}
+{% endblock %}
+<form {% if has_file_field %}enctype="multipart/form-data" {% endif %}action="{{ form_url }}" method="post" id="{{ opts.model_name }}_form" novalidate>{% csrf_token %}{% block form_top %}{% endblock %}
+<div>
+{% if is_popup %}<input type="hidden" name="{{ is_popup_var }}" value="1">{% endif %}
+{% if to_field %}<input type="hidden" name="{{ to_field_var }}" value="{{ to_field }}">{% endif %}
+{% if save_on_top %}{% block submit_buttons_top %}{% submit_row %}{% endblock %}{% endif %}
+{% if errors %}
+    <p class="errornote">
+    {% if errors|length == 1 %}{% trans "Please correct the error below." %}{% else %}{% trans "Please correct the errors below." %}{% endif %}
+    </p>
+    {{ adminform.form.non_field_errors }}
+{% endif %}
+
+{% block field_sets %}
+{% for fieldset in adminform %}
+  {% include "admin/includes/fieldset.html" %}
+{% endfor %}
+{% endblock %}
+
+{% block after_field_sets %}{% endblock %}
+
+{% block inline_field_sets %}
+{% for inline_admin_formset in inline_admin_formsets %}
+    {% include inline_admin_formset.opts.template %}
+{% endfor %}
+
+  
+
+
+
+
+
+  
+<div class="panel-title"> Calculadora</div>
+<div class="submit-row">
+<input  value="Eliminar texto" type="button" onclick="eraseText()"></input>
+<input style=""type="button" onclick="sueldo1()" value="Sueldo"></input>
+<input style=""type="button" onclick="suma()" value="+"></input>
+<input style=""type="button" onclick="resta()" value="-"></input>
+<input style=""type="button" onclick="parentesis1()" value="("></input>
+<input style=""type="button" onclick="parentesis2()" value=")"></input>
+<input style=""type="button" onclick="mult()" value="*"></input> <br>
+</div>
+<div class="submit-row">
+<input style=""type="button" onclick="i1()" value="1"></input>
+<input style=""type="button" onclick="i2()" value="2"></input>
+<input style=""type="button" onclick="i3()" value="3"></input>
+<input style=""type="button" onclick="i4()" value="4"></input>
+<input style=""type="button" onclick="i5()" value="5"></input>
+<input style=""type="button" onclick="i6()" value="6"></input>
+<input style=""type="button" onclick="i7()" value="7"></input>
+<input style=""type="button" onclick="i8()" value="8"></input>
+<input style=""type="button" onclick="i9()" value="9"></input>
+<input style=""type="button" onclick="i0()" value="0"></input>
+</div>
+</div>
+
+
+
+<script>
+
+function sueldo1(){                
+                                    
+document.getElementById("id_formula").value += "(self.cod_empleado.sueldo) "; 
+document.getElementById("PruebaFormula").value += "sueldo"; 
+}  
+
+
+function eraseText() {
+document.getElementById("id_formula").value = "";
+}
+
+function suma(){                
+                                    
+document.getElementById("id_formula").value += "+ "; 
+}  
+
+function resta(){                
+                                    
+document.getElementById("id_formula").value += "- "; 
+}
+
+function mult(){                
+                                    
+document.getElementById("id_formula").value += "* "; 
+} 
+
+function parentesis1(){                
+                                    
+document.getElementById("id_formula").value += "( "; 
+} 
+
+function parentesis2(){                
+                                    
+document.getElementById("id_formula").value += ")"; 
+} 
+
+function divi(){                
+                                    
+document.getElementById("id_formula").value += "/"; 
+} 
+
+function i1(){                
+                                    
+document.getElementById("id_formula").value += "1"; 
+} 
+
+function i2(){                
+                                    
+document.getElementById("id_formula").value += "2"; 
+} 
+function i3(){                
+                                    
+document.getElementById("id_formula").value += "3"; 
+} 
+function i4(){                
+                                    
+document.getElementById("id_formula").value += "4"; 
+} 
+function i5(){                
+                                    
+document.getElementById("id_formula").value += "5"; 
+} 
+function i6(){                
+                                    
+document.getElementById("id_formula").value += "6"; 
+} 
+function i7(){                
+                                    
+document.getElementById("id_formula").value += "7"; 
+} 
+function i8(){                
+                                    
+document.getElementById("id_formula").value += "8"; 
+} 
+function i9(){                
+                                    
+document.getElementById("id_formula").value += "9"; 
+} 
+function i0(){                
+                                    
+document.getElementById("id_formula").value += "0"; 
+} 
+
+</script>
+
+
+
+</script>
+{% endblock %}
+
+
+{% block after_related_objects %}{% endblock %}
+
+{% block submit_buttons_bottom %}{% submit_row %}{% endblock %}
+
+{% block admin_change_form_document_ready %}
+    <script type="text/javascript"
+            id="django-admin-form-add-constants"
+            src="{% static 'admin/js/change_form.js' %}"
+            {% if adminform and add %}
+                data-model-name="{{ opts.model_name }}"
+            {% endif %}>
+    </script>
+
+{% endblock %}
+
+{# JavaScript for prepopulated fields #}
+{% prepopulated_fields_js %}
+<script type="text/javascript">
+  document.getElementById("id_formula").readOnly = true;
+</script>>
+</div>
+</form></div>
+{% endblock %}
