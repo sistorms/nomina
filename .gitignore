@@ -1,3 +1,4 @@
 
 populate_data2.py
 recursos_humanos/migrations/*
+db.sqlite3
