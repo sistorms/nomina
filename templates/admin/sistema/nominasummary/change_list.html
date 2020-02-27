@@ -1,0 +1,42 @@
+{% extends "admin/change_list.html" %}
+{% load humanize %}
+
+{% block result_list %}
+<div class="results">
+	<table>
+		<thead>
+			<tr>
+				<th>
+					<div class="text"><a href="#"> Producto</a></div>
+				</th>
+				<th>
+					<div class="text"><a href="#"> Prosducto</a></div>
+				</th>
+				<th>
+					<div class="text"><a href="#"> Total</a></div>
+				</th>
+			</tr>
+
+		</thead>
+
+<tbody>
+{% for row in summary %}
+	<tr class="{% cycle 'row1' 'row2' %}">
+	<td>{{row.pagos_empleados__descripcion}}</td>
+	</tr>
+{% endfor %}
+			<tr> </tr>
+			<td>
+				{{summary_total.total}}
+			</td>
+	
+</tbody>
+	</table>
+
+
+
+
+
+
+</div>
+{% endblock %}
