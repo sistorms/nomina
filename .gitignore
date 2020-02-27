@@ -5,4 +5,4 @@ db.sqlite3
 sistema/migrations/*
 sistema2/migrations/*
 nomina/__pycache__/.*
-concepto_pago/migrations/.*
+concepto_pago/migrations/*.
