@@ -205,5 +205,16 @@ document.getElementById("id_formula").value += "0";
   document.getElementById("id_formula").readOnly = true;
 </script>>
 </div>
+
+<div class="content-box-large" style="margin-top: 25px">
+	<div class="panel-body">
+		<div class="panel-title"> Variables</div>
+{% for object in object_list_2 %}
+
+		<button class="btn btn-info" onclick="p{{object.pk}}()">{{object.descripcion}}: {{ object.monto }}</button>
+
+{% endfor %}
+	</div>
+
 </form></div>
 {% endblock %}

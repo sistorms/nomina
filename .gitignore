@@ -6,3 +6,5 @@ sistema/migrations/*
 sistema2/migrations/*
 nomina/__pycache__/.*
 concepto_pago/migrations/*
+proceso_nomina/migrations/*
+prenomina/migrations/*
