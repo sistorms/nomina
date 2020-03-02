@@ -1,14 +1,17 @@
 {% extends "admin/change_form.html" %}
 
 {% block extrahead %}
-    <script src="{{MEDIA_URL}}js/jquery.js" type="text/javascript"></script>
+<h1>
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+</h1>
+    <script src="{{MEDIA_URL}}/js/jquery.js" type="text/javascript"></script>
     <script type="text/javascript">
       $(document).ready(function() {
         $('#id_cod_solicitud').change(function() {
           $.ajax({
             type: 'POST',
             url: "{% url get_template_info %}",
-            data: {'cod_solicitud_pk': $('#id_cod_solicitud').val()},
+            data: {'cod_solicitud': $('#id_cod_solicitud').val()},
             success: function(data, _status) {
               $('#id_apellido_1').val(data.apellido_1);
 

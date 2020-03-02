@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'prenomina',
     'recursos_humanos',
     'concepto_pago',
+    'proceso_nomina',
     #'tabbed_admin',
 
 ]
@@ -143,7 +144,7 @@ STATICFILES_DIRS = (
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 MEDIA_URL = '/media/'
 # easy thumbnails
-from easy_thumbnails.conf import Settings as easy_thumbnails_settings
-THUMBNAIL_PROCESSORS = (
-    'image_cropping.thumbnail_processors.crop_corners',
-)
+# from easy_thumbnails.conf import Settings as easy_thumbnails_settings
+# THUMBNAIL_PROCESSORS = (
+#     'image_cropping.thumbnail_processors.crop_corners',
+# )

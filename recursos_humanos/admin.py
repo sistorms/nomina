@@ -152,6 +152,7 @@ class FamiliaEmpleadoInline(admin.StackedInline):
     )
 
 
+
 class EducacionEmpleadoInline(admin.StackedInline):
     model = EducacionEmpleado
     extra = 0
@@ -160,6 +161,10 @@ class EducacionEmpleadoInline(admin.StackedInline):
             'fields': (('titulo', 'finalizado'),('inicio',),('fin',),'aptitudes')
         }),
     )
+
+    class Media:
+        js = ("js/selected.js",)
+
 	
 
 
@@ -170,7 +175,19 @@ class EmpleadoAdmin(admin.ModelAdmin):
 	list_filter = ['status',]
 	search_fields = ['nombre_1', 'cedula',]
 	inlines = [EducacionEmpleadoInline,FamiliaEmpleadoInline]
-	radio_fields = {'status': admin.HORIZONTAL}
+	#radio_fields = {'status': admin.HORIZONTAL}
+    
+
+
+
+
+
+        
+    # class Media:
+    #     js = ('//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js', # jquery
+    #     'js/selected.js',       # project static folde
+    #     'recursos_humanos/js/selected.js',   # app static folder
+    #     )
 	# fieldsets = (
     #     (None, {
 	# 		'classes': ('extrapretty','wide'),
