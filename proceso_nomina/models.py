@@ -15,3 +15,17 @@ class Prenomina(models.Model):
 	pagos_empleados = models.ManyToManyField(PagoEmpleado)
 	fecha_inicio = models.DateTimeField(blank=True, null=True)
 	fecha_final = models.DateTimeField(blank=True, null=True)
+
+class Nomina(models.Model):
+	cod_nomina = models.AutoField(unique=True, primary_key=True)
+	cod_prenomina = models.ForeignKey(Prenomina, verbose_name='Prenomina Procesada', on_delete=models.CASCADE)
+	procesado = models.BooleanField(verbose_name='Procesar Nomina')
+
+
+
+
+class PrenominaSummary(Prenomina):
+    class Meta:
+        proxy = True
+        verbose_name = 'Informacion Nomina'
+        verbose_name_plural = 'Vista Sobre las Nominas'
