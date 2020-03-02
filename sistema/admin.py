@@ -3,8 +3,8 @@ from django import forms
 from django.db.models import Sum
 from django.forms import ModelForm
 from django.utils import timezone
-from django.contrib.contenttypes.admin import GenericTabularInline
-from tabbed_admin import TabbedModelAdmin
+#from django.contrib.contenttypes.admin import GenericTabularInline
+#from tabbed_admin import TabbedModelAdmin
 
 
 # Register your models here.
