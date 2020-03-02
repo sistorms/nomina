@@ -78,7 +78,12 @@ class PagoEmpleado(models.Model):
     monto = models.DecimalField(decimal_places=2, max_digits=20, default='0',blank=True, null=True)
     formula = models.CharField(max_length=250 ,blank=True, null=True)
 
+    
+
     def save(self, *args, **kwargs):
+        def year_betwen(self):
+            return abs(self.cod_empleado.fecha_nacimiento - self.cod_empleado.fecha_nacimiento).years
+
         self.formula = self.elemento_pago.formula
         self.monto = eval(self.elemento_pago.formula)
         if self.elemento_pago.codigo_ad == 'deduccion':

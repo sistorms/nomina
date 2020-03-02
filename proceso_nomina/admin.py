@@ -12,6 +12,7 @@ class PrenominaAdmin(admin.ModelAdmin):
 @admin.register(PrenominaSummary)
 class PrenominaSummaryAdmin(admin.ModelAdmin):
     actions = False
+    date_hierarchy = 'fecha_final'
     def has_add_permission(self, request, obj=None):
         return False
     def has_change_permission(self, request, obj=None):

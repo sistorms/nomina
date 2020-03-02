@@ -56,6 +56,10 @@ class Persona(models.Model):
     fech_ing = models.DateField(auto_now= True)
     imagen = models.ImageField(upload_to='empleados', blank=True, null=True)
 
+    def year_betwen(self):
+        return abs(self.fech_ing - self.fecha_nacimiento)
+    
+
 
     def imagen_tag(self):
         if self.imagen:

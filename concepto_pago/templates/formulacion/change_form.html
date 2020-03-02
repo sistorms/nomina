@@ -69,6 +69,8 @@
 <div class="submit-row">
 <input  value="Eliminar texto" type="button" onclick="eraseText()"></input>
 <input style=""type="button" onclick="sueldo1()" value="Sueldo"></input>
+<input style=""type="button" onclick="edad()" value="Edad"></input>
+<input style=""type="button" onclick="serv()" value="Años de Servicio"></input>
 <input style=""type="button" onclick="suma()" value="+"></input>
 <input style=""type="button" onclick="resta()" value="-"></input>
 <input style=""type="button" onclick="parentesis1()" value="("></input>
@@ -97,7 +99,12 @@ function sueldo1(){
                                     
 document.getElementById("id_formula").value += "(self.cod_empleado.sueldo) "; 
 document.getElementById("PruebaFormula").value += "sueldo"; 
-}  
+}
+
+function edad(){                
+                                    
+document.getElementById("id_formula").value += "(self.cod_empleado.year_betwen(self)) "; 
+}
 
 
 function eraseText() {
